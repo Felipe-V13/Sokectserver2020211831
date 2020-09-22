@@ -25,18 +25,45 @@ public class ClientHandler extends Thread{
         String Toreturn;
         While (true){
             try{
-                dos.writeUF(str "Que informacion quiere [Fecha]...\n" + "Escriba Salir para terminar");
+                dos.writeUF(str "Que informacion quiere [Fecha | Hora ]...\n" + "Escriba Salir para terminar");
 
 
                 received = dis.readUTF();
 
                 if (received.equals ("Exit")){
-                    System.out.printl("CLiente" + this.s )
+                    System.out.println("Cliente" + this.s + "quiere cerrar la conexion");
+                    System.out.println("Cerrando la conexion...");
+                    this.s.close
+                    System.out.println("Se cerró la conexión");
+                    break;
+
+                }
+                Date date = new Date();
+
+                swicht (received){
+                    case "Fecha" :
+                        toreturn = fordate.format(date);
+                        dos.writeUTF(toreturn);
+                        break;
+                    case "time":
+                        toreturn = fortime.format(date);
+                        dos.writeUTF(toreturn);
+                        break;
+                    default:
+                        dos.writeUTF(str "Entrada inválida")
+
                 }
 
             } catch (IOExecption e){
                 e.printStackTrace();
             }
+        }
+        try{
+            this.close();
+            this.dos.close();
+
+        }catch(IOExeption e){
+            e.printStackTrace
         }
     }
 }
